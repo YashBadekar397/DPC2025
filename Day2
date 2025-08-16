@@ -1,0 +1,33 @@
+import java.util.Arrays;
+
+public class Day2  {
+
+    public static int findMissingNumber(int[] arr) {
+        int n = arr.length + 1;  // Since one number is missing
+        long expectedSum = (long) n * (n + 1) / 2; // Sum of 1..n
+        long actualSum = 0;
+
+        for (int num : arr) {
+            actualSum += num;   // Sum of array elements
+        }
+
+        return (int)(expectedSum - actualSum); // Missing number
+    }
+
+    public static void main(String[] args) {
+        // Test Cases
+        int[][] testCases = {
+                {1, 2, 4, 5},    // Missing 3
+                {2, 3, 4, 5},    // Missing 1
+                {1, 2, 3, 4},    // Missing 5
+                {1}              // Missing 2
+        };
+
+        for (int i = 0; i < testCases.length; i++) {
+            System.out.println("Test Case " + (i+1));
+            System.out.println("Input: " + Arrays.toString(testCases[i]));
+            System.out.println("Missing number: " + findMissingNumber(testCases[i]));
+            System.out.println();
+        }
+    }
+}
